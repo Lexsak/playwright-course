@@ -6,7 +6,7 @@ test.describe("User login to Demobank", () => {
     const url = "https://demo-bank.vercel.app/";
     const userId = "tester12";
     const userPassword = "aaaaaaaa";
-    const expectedUserName = "Jan Demobankowy";
+    const expectedUserName = "Jaan Demobankowy";
     
     // Act
     await page.goto(url);
