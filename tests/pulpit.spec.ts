@@ -1,9 +1,13 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Group description", () => {
+  test.beforeEach(async ({ page }) => {
+    const url = "https://demo-bank.vercel.app/";
+    await page.goto(url);
+  });
+
   test("quick payment with correct data", async ({ page }) => {
     // Arrange
-    const url = "https://demo-bank.vercel.app/";
     const userId = "tester12";
     const userPassword = "aaaaaaaa";
 
@@ -13,7 +17,6 @@ test.describe("Group description", () => {
     const expectTransferReceiver = "Chuck Demobankowy";
 
     // Act
-    await page.goto(url);
     await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill(userPassword);
     await page.getByTestId("login-button").click();
@@ -36,7 +39,6 @@ test.describe("Group description", () => {
 
   test("successful mobile top-up", async ({ page }) => {
     // Arrange
-    const url = "https://demo-bank.vercel.app/";
     const userId = "tester12";
     const userPassword = "aaaaaaaa";
 
@@ -44,7 +46,6 @@ test.describe("Group description", () => {
     const topupAmount = "40";
 
     // Act
-    await page.goto(url);
     await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill(userPassword);
     await page.getByTestId("login-button").click();
