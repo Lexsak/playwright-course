@@ -5,9 +5,8 @@ test.describe("Group description", () => {
   test.beforeEach(async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
-    const url = "https://demo-bank.vercel.app/";
-    await page.goto(url);
-
+    
+    await page.goto('/');
     await page.getByTestId("login-input").fill(userId);
     await page.getByTestId("password-input").fill(userPassword);
     await page.getByTestId("login-button").click();
