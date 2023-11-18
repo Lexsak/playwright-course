@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { loginData } from "../test-data/login.data";
 
 test.describe("Group description", () => {
-  const userId = "tester12";
   test.beforeEach(async ({ page }) => {
-    const userPassword = "aaaaaaaa";
+    const userId = loginData.userId;
+    const userPassword = loginData.password;
     const url = "https://demo-bank.vercel.app/";
     await page.goto(url);
 
