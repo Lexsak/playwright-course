@@ -30,9 +30,6 @@ test.describe("Group description", () => {
 
     await pulpitPage.executeButton.click();
     await pulpitPage.closeButton.click();
-    // await page.getByRole("link", {
-    //   name: "Przelew wykonany! Chuck Demobankowy - 150,00PLN - pizza",
-    // }).click();
 
     // Assert
     await expect(pulpitPage.messageText).toHaveText(
@@ -64,7 +61,7 @@ test.describe("Group description", () => {
   test("correct balance after successful mobile top-up", async ({ page }) => {
     // Arrange
     const pulpitPage = new PulpitPage(page);
-    
+
     const topupReceiver = "500 xxx xxx";
     const topupAmount = "40";
     const initialBalance = await pulpitPage.moneyValue.innerText();
