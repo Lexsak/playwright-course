@@ -4,6 +4,8 @@ import { LoginPage } from "../pages/login.page";
 import { PulpitPage } from "../pages/pulpit.page";
 
 test.describe("Group description", () => {
+  let pulpitPage: PulpitPage;
+
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     const userId = loginData.userId;
@@ -13,6 +15,8 @@ test.describe("Group description", () => {
     await loginPage.loginInput.fill(userId);
     await loginPage.passwordInput.fill(userPassword);
     await loginPage.loginButton.click();
+
+    pulpitPage = new PulpitPage(page);
   });
 
   test("quick payment with correct data", async ({ page }) => {
@@ -23,7 +27,7 @@ test.describe("Group description", () => {
     const expectTransferReceiver = "Chuck Demobankowy";
 
     // Act
-    const pulpitPage = new PulpitPage(page);
+
     await pulpitPage.transferReceiverSelect.selectOption(receiverId);
     await pulpitPage.transferAmountInput.fill(transferAmount);
     await pulpitPage.transferTitleInput.fill(transferTitle);
@@ -43,7 +47,6 @@ test.describe("Group description", () => {
     const topupAmount = "40";
 
     // Act
-    const pulpitPage = new PulpitPage(page);
 
     await pulpitPage.topupReceiverInput.selectOption(topupReceiver);
     await pulpitPage.topupAmountInput.fill(topupAmount);
@@ -60,7 +63,6 @@ test.describe("Group description", () => {
 
   test("correct balance after successful mobile top-up", async ({ page }) => {
     // Arrange
-    const pulpitPage = new PulpitPage(page);
 
     const topupReceiver = "500 xxx xxx";
     const topupAmount = "40";
